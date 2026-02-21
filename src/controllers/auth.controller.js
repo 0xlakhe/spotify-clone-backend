@@ -50,7 +50,7 @@ async function registerUser(req, res) {
 async function loginUser(req, res) {
   const { username, email, password } = req.body;
 
-  //checking if user exists again
+  //checking if user exists
   const user = await userModel.findOne({
     $or: [{ username }, { email }],
   });
@@ -70,6 +70,7 @@ async function loginUser(req, res) {
     });
   }
 
+  //creating token
   const token = jwt.sign(
     { id: user._id, role: user.role },
     process.env.JWT_SECRET,

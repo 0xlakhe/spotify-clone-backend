@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const musicSchema = new mongoose.Schema({
-  uri: {
+  url: {
     type: String,
     required: true,
   },
